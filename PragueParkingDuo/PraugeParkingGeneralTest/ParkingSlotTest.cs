@@ -36,7 +36,7 @@ namespace PraugeParkingGeneralTest
             // Assert
             catch (Exception e)
             {
-                Assert.Equals(e.GetType(),typeof(OverflowException));
+                Assert.Equals(e.GetType(),typeof(OverflowException));             
             }
             Assert.Fail();
         }

@@ -19,6 +19,7 @@ namespace PragueParkingDuo.Classes.Parking
             // Compare veh.Size and FreeSpace.
             // If there is space, Add veh to vehicles, and substract Size from FreeSpace.
             // If there is no space, throw an overflow exception.
+
             if(veh.Size <= FreeSpace)
             {
                 vehicles.Add(veh);
@@ -34,6 +35,14 @@ namespace PragueParkingDuo.Classes.Parking
         {
             // Look if reg exists in list vehicles.
             // If it does, remove from list, and add removed vehicle size to FreeSpace.
+
+            for (int i = 0; i < vehicles.Count; i++)
+            {
+                if (vehicles[i].Reg.Contains(reg))
+                {
+                    vehicles.RemoveAt(i);
+                }
+            }
         }
 
         public List<Vehicle> Content()

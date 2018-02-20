@@ -14,7 +14,7 @@ namespace PragueParkingDuo.Classes.Parking
 
         public bool TryAddVehicle<T>(string reg, out int indexOut) where T : Vehicle, new()
         {
-            T vehicle = new typeof(T(reg));
+            T vehicle = (T)Activator.CreateInstance(typeof(T), reg);
             int i = FindSpace(vehicle.Size);
             if(i >= 0)
             {
@@ -22,6 +22,9 @@ namespace PragueParkingDuo.Classes.Parking
                 indexOut = i;
                 return true;
             }
+            indexOut = -1;
+            return false;
+      
 
             // Use the method FindSpace to find a ParkingSlot to instantiate
             // a new vehicle to.
@@ -29,33 +32,6 @@ namespace PragueParkingDuo.Classes.Parking
             // Set indexOut to be the returned value of FindSpace().
             // If FindSpace did not return -1, then add a vehicle to the list held by		
             // the ParkingSlot at index of FindSpace.
-
-           
-            // Return true if Vehicle could be added.
-            // Return false if Vehicle could not be added.
-            throw new NotImplementedException();
-        }
-
-        public bool TryAddVehicle(Vehicle veh, out int indexOut)
-        {
-            /* T vehicle = new T();
-             vehicle.Reg = reg;
-             int i = FindSpace(vehicle.Size);
-             if(i >= 0)
-             {
-                 parkingslots[i].AddVehicle(vehicle);
-                 indexOut = i;
-                 return true;
-             }
-             return false;*/
-
-            // Use the method FindSpace to find a ParkingSlot to instantiate
-            // a new vehicle to.
-
-            // Set indexOut to be the returned value of FindSpace().
-            // If FindSpace did not return -1, then add a vehicle to the list held by		
-            // the ParkingSlot at index of FindSpace.
-
 
             // Return true if Vehicle could be added.
             // Return false if Vehicle could not be added.
