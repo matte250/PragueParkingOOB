@@ -12,6 +12,9 @@ namespace TestPushGit
         {
             Console.WriteLine("Hej Mattias!");
 
+
+            Console.WriteLine("DO U KNOW DA WHEY?");
+
             Console.WriteLine("Skit ner dig Ernes :)");
         }
     }
