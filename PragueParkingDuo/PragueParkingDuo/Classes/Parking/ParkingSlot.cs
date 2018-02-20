@@ -9,16 +9,25 @@ namespace PragueParkingDuo.Classes.Parking
     public class ParkingSlot
     {
 
-        public int FreeSpace { get; private set; }
-        private int size = 4;
+
+        private static int size = 4;
+        public int FreeSpace { get; private set; } = size;
         private List<Vehicle> vehicles = new List<Vehicle>();
 
         public void AddVehicle(Vehicle veh)
         {
             // Compare veh.Size and FreeSpace.
-            // If there is space, Add veh to vehicles, and substract Size from   	  
-            // FreeSpace.
+            // If there is space, Add veh to vehicles, and substract Size from FreeSpace.
             // If there is no space, throw an overflow exception.
+            if(veh.Size <= FreeSpace)
+            {
+                vehicles.Add(veh);
+                FreeSpace = FreeSpace - veh.Size;
+            }
+            else
+            {
+                 throw new OverflowException();
+            }
         }
 
         public void RemoveVehicle(string reg)

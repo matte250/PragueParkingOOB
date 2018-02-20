@@ -12,6 +12,10 @@ namespace PragueParkingDuo.Classes
         public string Reg { get; private set; }
         public DateTime Arrival { get; private set; }
 
+        public Vehicle()
+        {
+
+        }
         public Vehicle(string reg)
         {
             Reg = reg;
