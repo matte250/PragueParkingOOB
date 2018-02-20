@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PragueParkingGeneral", "PragueParkingDuo\PragueParkingGeneral.csproj", "{129D300C-89A7-4896-BBC1-AEF957AE436F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CE6577D8-9367-4FAA-B418-00513FA20C07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PraugeParkingGeneralTest", "PraugeParkingGeneralTest\PraugeParkingGeneralTest.csproj", "{54BBC44C-6370-45F0-8A39-F36363BAA440}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{129D300C-89A7-4896-BBC1-AEF957AE436F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{129D300C-89A7-4896-BBC1-AEF957AE436F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{129D300C-89A7-4896-BBC1-AEF957AE436F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{129D300C-89A7-4896-BBC1-AEF957AE436F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54BBC44C-6370-45F0-8A39-F36363BAA440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54BBC44C-6370-45F0-8A39-F36363BAA440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54BBC44C-6370-45F0-8A39-F36363BAA440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54BBC44C-6370-45F0-8A39-F36363BAA440}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{54BBC44C-6370-45F0-8A39-F36363BAA440} = {CE6577D8-9367-4FAA-B418-00513FA20C07}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E850EC6-4678-4320-843A-4EFD88A341E4}
+	EndGlobalSection
+EndGlobal
