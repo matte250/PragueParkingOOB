@@ -11,6 +11,8 @@ namespace TestPushGit
         static void Main(string[] args)
         {
             Console.WriteLine("Hej Mattias!");
+
+            Console.WriteLine("Skit ner dig Ernes :)");
         }
     }
 }
