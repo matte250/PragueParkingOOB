@@ -41,6 +41,7 @@ namespace PragueParkingDuo.Classes.Parking
                 if (vehicles[i].Reg.Contains(reg))
                 {
                     vehicles.RemoveAt(i);
+                    FreeSpace = FreeSpace + vehicles[i].Size;
                 }
             }
         }
