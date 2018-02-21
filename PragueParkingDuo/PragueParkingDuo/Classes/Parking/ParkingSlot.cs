@@ -56,15 +56,18 @@ namespace PragueParkingDuo.Classes.Parking
             return false;
         }
 
-        public int GetVehicleSize(string reg)
+        public Vehicle GetVehicle(string reg)
         {
-            // If reg exists, then the size of the vehicle containing size, else return -1.
+            // If reg exists, then return a copy of that vehicle.
             if (ContainsVehicle(reg))
             {
-
+                foreach(Vehicle v in vehicles)
+                {
+                    if (v.Reg.Equals(reg)) return v.Clone();
+                }
             }
 
-            return -1;
+            return null;
         }
 
         public List<Vehicle> Content()

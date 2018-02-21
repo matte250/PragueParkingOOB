@@ -100,7 +100,15 @@ namespace PragueParkingDuo.Classes.Parking
             int index = Search(reg);
             if (index != -1 && pIndex >= 0 && pIndex <= 100)
             {
-                Vehicle veh = parkingslots[index].Content
+                int sizeFrom = parkingslots[index].GetVehicle(reg).Size;
+                int freeSizeTo = parkingslots[pIndex].FreeSpace;
+                if(freeSizeTo >= sizeFrom)
+                {
+                    Vehicle tempV = parkingslots[index].GetVehicle(reg);
+                    parkingslots[index].RemoveVehicle(reg);
+                    parkingslots[pIndex].AddVehicle(tempV);
+                    return true;
+                }
             }
             
             return false;
