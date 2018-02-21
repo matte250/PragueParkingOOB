@@ -38,7 +38,7 @@ namespace PragueParkingDuo.Classes.Parking
             throw new NotImplementedException();
         }
 
-        bool TryRemoveVehicle(string reg, out int indexOut)
+        public bool TryRemoveVehicle(string reg, out int indexOut)
         {
             //Use the method Search to find the index of a ParkingSlot that contains
             // a vehicle with reg. 
@@ -52,14 +52,14 @@ namespace PragueParkingDuo.Classes.Parking
             throw new NotImplementedException();
         }
 
-        int FindSpace(int size)
+        public int FindSpace(int size)
         {
             // Find parking index with "size" => FreeSpace, and return the index.
             // If you cannot find a parking with freespace, return -1.
             throw new NotImplementedException();
         }
 
-        int Search(string reg)
+        public int Search(string reg)
         {
             // Iterate over the array and each list contained in the array. 
             // Check if any vehicle in any of the lists contains reg
@@ -67,7 +67,7 @@ namespace PragueParkingDuo.Classes.Parking
             // If reg could not be found, return -1.
             throw new NotImplementedException();
         }
-        bool TryMove(string reg, int pIndex)
+        public bool TryMove(string reg, int pIndex)
         {
             // Use the search method to see if reg exists in any of the vehicles
             // of the ParkingSlot list.
@@ -83,14 +83,14 @@ namespace PragueParkingDuo.Classes.Parking
             throw new NotImplementedException();
         }
 
-        Vehicle getVehicle(string reg)
+        public Vehicle getVehicle(string reg)
         {
             // Use the search method to see if reg exists in any of the vehicles.
             // If it does, return that vehicle.
             // If it doesn't, return null.
             throw new NotImplementedException();
         }
-        ParkingSlot[] Content()
+        public ParkingSlot[] Content()
         {
             return parkingslots.Clone() as ParkingSlot[];
             // tror inte det kommer funka måste klona varje vehicle för sig.

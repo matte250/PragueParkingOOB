@@ -13,6 +13,11 @@ namespace PragueParkingDuo.Classes
             this.Size = 3;
         }
 
+        public Trike() : base()
+        {
+
+        }
+
     }
 
 }

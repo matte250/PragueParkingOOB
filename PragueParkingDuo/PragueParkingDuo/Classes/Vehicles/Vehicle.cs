@@ -14,7 +14,7 @@ namespace PragueParkingDuo.Classes
 
         public Vehicle()
         {
-
+            Arrival = DateTime.Now;
         }
         public Vehicle(string reg)
         {
