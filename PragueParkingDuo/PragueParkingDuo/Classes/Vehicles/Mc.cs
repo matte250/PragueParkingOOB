@@ -18,6 +18,11 @@ namespace PragueParkingDuo.Classes
             this.Size = 2;
         }
 
+        public override string ToString()
+        {
+            return "M:" + Reg;
+        }
+
     }
 
 }

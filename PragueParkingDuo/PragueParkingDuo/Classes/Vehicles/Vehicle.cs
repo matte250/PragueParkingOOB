@@ -27,6 +27,11 @@ namespace PragueParkingDuo.Classes
             return (Vehicle)Activator.CreateInstance(GetType(), Reg);
         }
 
+        public override string ToString()
+        {
+            return "V:" + Reg;
+        }
+
     }
 
 }

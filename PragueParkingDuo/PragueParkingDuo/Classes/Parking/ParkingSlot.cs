@@ -19,7 +19,6 @@ namespace PragueParkingDuo.Classes.Parking
             // Compare veh.Size and FreeSpace.
             // If there is space, Add veh to vehicles, and substract Size from FreeSpace.
             // If there is no space, throw an overflow exception.
-
             if(veh.Size <= FreeSpace)
             {
                 vehicles.Add(veh);
