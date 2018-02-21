@@ -15,7 +15,7 @@ namespace PragueParkingDuo.Classes
 
         public Bike() : base()
         {
-
+            this.Size = 1;
         }
 
     }

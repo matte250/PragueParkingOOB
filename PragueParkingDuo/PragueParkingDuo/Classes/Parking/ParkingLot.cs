@@ -12,19 +12,18 @@ namespace PragueParkingDuo.Classes.Parking
         public int getNumFreeParkingSlots { get; private set; }
         public int getLargestFreeSpace { get; private set; }
 
-        public bool TryAddVehicle<T>(string reg, out int indexOut) where T : Vehicle, new()
+        public bool TryAddVehicle(Vehicle veh, out int indexOut)
         {
-            T vehicle = (T)Activator.CreateInstance(typeof(T), reg);
-            int i = FindSpace(vehicle.Size);
-            if(i >= 0)
+            int i = FindSpace(veh.Size);
+            if (i >= 0)
             {
-                parkingslots[i].AddVehicle(vehicle);
+                parkingslots[i].AddVehicle(veh);
                 indexOut = i;
                 return true;
             }
             indexOut = -1;
             return false;
-      
+
 
             // Use the method FindSpace to find a ParkingSlot to instantiate
             // a new vehicle to.
@@ -35,7 +34,6 @@ namespace PragueParkingDuo.Classes.Parking
 
             // Return true if Vehicle could be added.
             // Return false if Vehicle could not be added.
-            throw new NotImplementedException();
         }
 
         public bool TryRemoveVehicle(string reg, out int indexOut)
