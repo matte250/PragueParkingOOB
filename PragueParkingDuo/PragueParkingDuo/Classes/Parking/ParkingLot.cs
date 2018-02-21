@@ -97,7 +97,6 @@ namespace PragueParkingDuo.Classes.Parking
         public ParkingSlot[] Content()
         {
             return parkingslots.Clone() as ParkingSlot[];
-            // tror inte det kommer funka måste klona varje vehicle för sig.
         }
     }
 

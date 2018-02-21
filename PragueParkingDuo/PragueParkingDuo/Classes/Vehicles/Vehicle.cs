@@ -22,6 +22,11 @@ namespace PragueParkingDuo.Classes
             Arrival = DateTime.Now;
         }
 
+        public Vehicle VehicleClone()
+        {
+            return (Vehicle)Activator.CreateInstance(GetType(), Reg);
+        }
+
     }
 
 }

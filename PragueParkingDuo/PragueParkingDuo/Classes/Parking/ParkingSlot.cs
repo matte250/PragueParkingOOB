@@ -48,7 +48,12 @@ namespace PragueParkingDuo.Classes.Parking
 
         public List<Vehicle> Content()
         {
-            return new List<Vehicle>(vehicles);
+            List<Vehicle> vl = new List<Vehicle>();
+            foreach(Vehicle v in vehicles)
+            {
+                vl.Add(v.VehicleClone());
+            }
+            return vl;
         }
     }
 
