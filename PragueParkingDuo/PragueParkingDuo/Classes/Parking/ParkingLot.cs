@@ -23,8 +23,6 @@ namespace PragueParkingDuo.Classes.Parking
             }
             indexOut = -1;
             return false;
-
-
             // Use the method FindSpace to find a ParkingSlot to instantiate
             // a new vehicle to.
 
@@ -38,6 +36,15 @@ namespace PragueParkingDuo.Classes.Parking
 
         public bool TryRemoveVehicle(string reg, out int indexOut)
         {
+            int i = Search(reg);
+            if (i >= 0)
+            {
+                parkingslots[i].RemoveVehicle(reg);
+                indexOut = i;
+                return true;
+            }
+            indexOut = -1;
+            return false;
             //Use the method Search to find the index of a ParkingSlot that contains
             // a vehicle with reg. 
 
@@ -47,7 +54,6 @@ namespace PragueParkingDuo.Classes.Parking
 
             // Return true if vehicle was found and removed.
             // Return false if vehicle was not found and not removed.
-            throw new NotImplementedException();
         }
 
         public int FindSpace(int size)
