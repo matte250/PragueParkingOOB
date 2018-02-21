@@ -21,6 +21,7 @@ namespace PraugeParkingGeneralTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(OverflowException))]
         public void AddVehicle_IfVehicleDoesNotFit_IsTrue()
         {
             // Assign
@@ -28,17 +29,9 @@ namespace PraugeParkingGeneralTest
             Car car = new Car("ABC123");
             Bike bike = new Bike("BCA123");
             // Act
-            try
-            {
-                slot.AddVehicle(car);
-                slot.AddVehicle(bike);
-            }
+            slot.AddVehicle(car);
+            slot.AddVehicle(bike);
             // Assert
-            catch (Exception e)
-            {
-                Assert.Equals(e.GetType(),typeof(OverflowException));             
-            }
-            Assert.Fail();
         }
 
         [TestMethod]
