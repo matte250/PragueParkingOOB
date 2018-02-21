@@ -46,12 +46,22 @@ namespace PragueParkingDuo.Classes.Parking
             }
         }
 
+        public bool ContainsVehicle(String reg)
+        {
+            // Loop through each Vehicle in the list vehicles and return true if Vehicle with reg was found, else false.
+            foreach(Vehicle v in vehicles)
+            {
+                if (v.Reg.Equals(reg)) return true;
+            }
+            return false;
+        }
+
         public List<Vehicle> Content()
         {
             List<Vehicle> vl = new List<Vehicle>();
             foreach(Vehicle v in vehicles)
             {
-                vl.Add(v.VehicleClone());
+                vl.Add(v.Clone());
             }
             return vl;
         }
