@@ -58,8 +58,15 @@ namespace PragueParkingDuo.Classes.Parking
 
         public int FindSpace(int size)
         {
-            
-            throw new NotImplementedException();
+            // Find parking index with "size" => FreeSpace, and return the index.
+            // If you cannot find a parking with freespace, return -1.
+
+            for (int i = 0; i < parkingslots.Length; i++)
+            {
+                if (size >= parkingslots[i].FreeSpace) return i;
+            }
+            return -1;
+
         }
 
         public int Search(string reg)
@@ -90,16 +97,15 @@ namespace PragueParkingDuo.Classes.Parking
 
             // If reg could be found by Search, and move was valid, then return true,  		
             // otherwise return false.
-            throw new NotImplementedException();
+            int index = Search(reg);
+            if (index != -1 && pIndex >= 0 && pIndex <= 100)
+            {
+                Vehicle veh = parkingslots[index].Content
+            }
+            
+            return false;
         }
-
-        public Vehicle getVehicle(string reg)
-        {
-            // Use the search method to see if reg exists in any of the vehicles.
-            // If it does, return that vehicle.
-            // If it doesn't, return null.
-            throw new NotImplementedException();
-        }
+        
         public ParkingSlot[] Content()
         {
             return parkingslots.Clone() as ParkingSlot[];
