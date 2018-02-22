@@ -34,15 +34,31 @@ namespace PragueParkingDuo.Classes.Parking
         {
             // Look if reg exists in list vehicles.
             // If it does, remove from list, and add removed vehicle size to FreeSpace.
+          
+            Vehicle veh = null;
 
             for (int i = 0; i < vehicles.Count; i++)
             {
                 if (vehicles[i].Reg.Contains(reg))
                 {
-                    vehicles.RemoveAt(i);
+
+                    veh = vehicles[i];
                     FreeSpace = FreeSpace + vehicles[i].Size;
+                    break;
+
                 }
             }
+
+            if (veh != null) vehicles.Remove(veh);
+            //foreach(Vehicle v in vehicles)
+            //{
+            //    if (v.Reg == (reg))
+            //    {
+
+            //        FreeSpace = FreeSpace + v.Size;
+            //        vehicles.Remove(v);
+            //    }
+            //}
         }
 
         public bool ContainsVehicle(String reg)

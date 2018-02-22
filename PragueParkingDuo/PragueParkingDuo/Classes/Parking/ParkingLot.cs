@@ -12,6 +12,14 @@ namespace PragueParkingDuo.Classes.Parking
         public int getNumFreeParkingSlots { get; private set; }
         public int getLargestFreeSpace { get; private set; }
 
+        public ParkingLot()
+        {
+            for (int i = 0; i < parkingslots.Length; i++)
+            {
+                parkingslots[i] = new ParkingSlot();
+            }
+        }
+
         public bool TryAddVehicle(Vehicle veh, out int indexOut)
         {
             int i = FindSpace(veh.Size);
@@ -43,7 +51,11 @@ namespace PragueParkingDuo.Classes.Parking
                 indexOut = i;
                 return true;
             }
-            indexOut = -1;
+            else
+            {
+                indexOut = -1;
+            }
+
             return false;
             //Use the method Search to find the index of a ParkingSlot that contains
             // a vehicle with reg. 
@@ -63,7 +75,7 @@ namespace PragueParkingDuo.Classes.Parking
 
             for (int i = 0; i < parkingslots.Length; i++)
             {
-                if (size >= parkingslots[i].FreeSpace) return i;
+                if (size <= parkingslots[i].FreeSpace) return i;
             }
             return -1;
 
