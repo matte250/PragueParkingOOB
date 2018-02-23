@@ -29,7 +29,7 @@ namespace PragueParkingGeneral
             parkingLot.TryAddVehicle(new Trike("Mmer"), out temp);
             parkingLot.TryAddVehicle(new Bike("fkuman"),out temp);
             //parkingLot.TryRemoveVehicle("ABC123", out temp);
-            Console.WindowWidth = 160;
+            //Console.WindowWidth = 160;
 
             //Console.SetWindowSize(Console.LargestWindowWidth,Console.LargestWindowHeight);
 
@@ -230,8 +230,8 @@ namespace PragueParkingGeneral
                     int tospot = 0;
                     if (int.TryParse(Console.ReadLine(), out tospot) && tospot >= 1 && tospot <= 100)
                     {
-                        clearLine();                    
-                        List<Vehicle> templ = parkingLot.Content()[tospot+1].Content();
+                        clearLine();
+                        List<Vehicle> templ = parkingLot.Content()[tospot].Content();
                         Console.Write("Vehicles in parkingslot {0}: ", tospot);
                         foreach (Vehicle v in templ)
                         {
