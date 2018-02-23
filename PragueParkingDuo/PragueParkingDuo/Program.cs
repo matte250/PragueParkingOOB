@@ -44,7 +44,7 @@ namespace PragueParkingGeneral
                 Console.WriteLine("Prauge Parking OOB 2.0");
                 drawParking(parkingLot, 1);
                 Console.CursorTop = 26;
-                Console.Write("1.Add Vehicle 2.Remove Vehicle 3.Search Vehicle 4.Move Vehicle");
+                Console.Write("1.Add Vehicle 2.Remove Vehicle 3.Search Vehicle 4.Move Vehicle 5.Search Parkingslot ");
                 menu = Console.ReadKey().KeyChar.ToString().ToUpper().First();
                 // Reading
 
@@ -142,6 +142,7 @@ namespace PragueParkingGeneral
                     bool succ = false;
                     int ind;
                     Console.CursorLeft = 0;
+                    Console.CursorTop = Console.WindowHeight - 2;
                     if (Regex.IsMatch(reg.ToUpper(), @"^[a-zA-Z0-9]+$") && reg.Length < 25)
                     {
                         int spot = parkingLot.Search(reg);
@@ -177,34 +178,73 @@ namespace PragueParkingGeneral
                     bool succ = false;
                     int ind;
                     Console.CursorLeft = 0;
+                    Console.CursorTop = Console.WindowHeight - 2;
                     if (Regex.IsMatch(reg.ToUpper(), @"^[a-zA-Z0-9]+$") && reg.Length < 25)
                     {
-                        Console.WriteLine("Write the spot you want to move the vehicle to:");
-                        int tospot = int.Parse(Console.ReadLine());
-                        tospot = tospot - 1;
-                        if(tospot >= 0 && tospot < 100)
+                        clearLine();
+                        Console.Write("Write the spot you want to move the vehicle to:");
+                        int tospot = 0;
+                        if (int.TryParse(Console.ReadLine(), out tospot) && tospot >= 1 && tospot <= 100)
                         {
-                            succ = parkingLot.TryMove(reg, tospot);
-                            if (succ == true)
+                            tospot = tospot - 1;
+                            if (tospot >= 0 && tospot < 100)
                             {
-                                clearLine();
-                                Console.Write("Your vehicle {0} is now parked at slot {1}. Press any key to continue...", reg, tospot);
-                                Console.CursorTop = Console.WindowHeight - 1;
-                                Console.ReadKey();
+                                Console.CursorTop = Console.WindowHeight - 2;
+                                succ = parkingLot.TryMove(reg, tospot);
+                                if (succ == true)
+                                {
+                                    clearLine();
+                                    Console.Write("Your vehicle {0} is now parked at slot {1}. Press any key to continue...", reg, tospot + 1);
+                                    Console.CursorTop = Console.WindowHeight - 1;
+                                    Console.ReadKey();
+                                }
+                                else
+                                {
+                                    clearLine();
+                                    Console.Write("Your vehicle could not be moved or was not found. Press any key to continue...");
+                                    Console.CursorTop = Console.WindowHeight - 1;
+                                    Console.ReadKey();
+                                }
                             }
-                            else
-                            {
-                                clearLine();
-                                Console.Write("Your vehicle could not be moved or was not found. Press any key to continue...");
-                                Console.CursorTop = Console.WindowHeight - 1;
-                                Console.ReadKey();
-                            }
+                        }
+                        else
+                        {
+                            clearLine();
+                            Console.Write("You did not input a valid number. Press any key to continue...");
+                            Console.CursorTop = Console.WindowHeight - 1;
+                            Console.ReadKey();
                         }
                     }
                     else
                     {
                         clearLine();
                         Console.Write("Your registration was not valid. Press any key to continue...");
+                        Console.ReadKey();
+                    }
+                }
+
+                if(menu == '5')
+                {
+                    clearLine();
+                    Console.Write("Write index you want to search:");
+                    int tospot = 0;
+                    if (int.TryParse(Console.ReadLine(), out tospot) && tospot >= 1 && tospot <= 100)
+                    {
+                        clearLine();                    
+                        List<Vehicle> templ = parkingLot.Content()[tospot+1].Content();
+                        Console.Write("Vehicles in parkingslot {0}: ", tospot);
+                        foreach (Vehicle v in templ)
+                        {
+                            Console.Write(v.ToString() + " ");
+                        }
+                        Console.ReadKey();
+                        
+                    }
+                    else
+                    {
+                        clearLine();
+                        Console.Write("You did not input a valid index. Press any key to continue...");
+                        Console.CursorTop = Console.WindowHeight - 1;
                         Console.ReadKey();
                     }
                 }
@@ -252,7 +292,7 @@ namespace PragueParkingGeneral
         static void clearLine()
         {
             Console.CursorLeft = 0;
-            Console.Write(String.Concat(Enumerable.Repeat(" ", 64)));
+            Console.Write(String.Concat(Enumerable.Repeat(" ", 128)));
             Console.CursorLeft = 0;
         }
 
