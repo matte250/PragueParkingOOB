@@ -22,14 +22,13 @@ namespace PragueParkingGeneral
             //parkingLot.TryAddVehicle(new Trike("TRIKEMF"), out temp);
             //parkingLot.TryAddVehicle(new Bike("TRIKEBÅLLS"), out temp);
             //parkingLot.TryAddVehicle(new Bike("TRIKEB2LLS"), out temp);
-            //parkingLot.TryAddVehicle(new Bike("TRIKEB3LLS"), out temp);
-            //parkingLot.TryAddVehicle(new Car("AB453426"), out temp);
-            //parkingLot.TryAddVehicle(new Bike("TRIKE53235B3LLS"), out temp);
-            ////parkingLot.TryRemoveVehicle("TRIKEMF", out temp);
+            parkingLot.TryAddVehicle(new Bike("TRIKEB3LLS"), out temp);
+            parkingLot.TryAddVehicle(new Car("AB453426"), out temp);
+            parkingLot.TryAddVehicle(new Bike("TRIKE53235B3LLS"), out temp);
             parkingLot.TryAddVehicle(new Trike("Mmer"), out temp);
             parkingLot.TryAddVehicle(new Bike("fkuman"),out temp);
             //parkingLot.TryRemoveVehicle("ABC123", out temp);
-            //Console.WindowWidth = 160;
+            Console.WindowWidth = 160;
 
             //Console.SetWindowSize(Console.LargestWindowWidth,Console.LargestWindowHeight);
 
@@ -44,7 +43,7 @@ namespace PragueParkingGeneral
                 Console.WriteLine("Prauge Parking OOB 2.0");
                 drawParking(parkingLot, 1);
                 Console.CursorTop = 26;
-                Console.Write("1.Add Vehicle 2.Remove Vehicle 3.Search Vehicle 4.Move Vehicle 5.Search Parkingslot ");
+                Console.Write("1.Add Vehicle 2.Remove Vehicle 3.Search Vehicle 4.Move Vehicle 5.Show slots content");
                 menu = Console.ReadKey().KeyChar.ToString().ToUpper().First();
                 // Reading
 
@@ -222,8 +221,7 @@ namespace PragueParkingGeneral
                         Console.ReadKey();
                     }
                 }
-
-                if(menu == '5')
+                if (menu == '5')
                 {
                     clearLine();
                     Console.Write("Write index you want to search:");
@@ -231,14 +229,14 @@ namespace PragueParkingGeneral
                     if (int.TryParse(Console.ReadLine(), out tospot) && tospot >= 1 && tospot <= 100)
                     {
                         clearLine();
-                        List<Vehicle> templ = parkingLot.Content()[tospot].Content();
+                        List<Vehicle> templ = parkingLot.Content()[tospot-1].Content();
                         Console.Write("Vehicles in parkingslot {0}: ", tospot);
                         foreach (Vehicle v in templ)
                         {
                             Console.Write(v.ToString() + " ");
                         }
                         Console.ReadKey();
-                        
+
                     }
                     else
                     {
@@ -248,7 +246,7 @@ namespace PragueParkingGeneral
                         Console.ReadKey();
                     }
                 }
-                
+
             } while (!menu.Equals('X'));
         }
 
@@ -292,7 +290,7 @@ namespace PragueParkingGeneral
         static void clearLine()
         {
             Console.CursorLeft = 0;
-            Console.Write(String.Concat(Enumerable.Repeat(" ", 128)));
+            Console.Write(String.Concat(Enumerable.Repeat(" ", 90)));
             Console.CursorLeft = 0;
         }
 
