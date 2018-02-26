@@ -11,6 +11,14 @@ namespace PragueParkingGeneral
 {
     class Program
     {
+        static ConsoleColor trimC = ConsoleColor.DarkCyan;
+        static ConsoleColor inputC = ConsoleColor.Black;
+        static ConsoleColor indexC = ConsoleColor.Black;
+        static ConsoleColor indextC = ConsoleColor.Yellow;
+        static ConsoleColor arrowC = ConsoleColor.Red;
+        static ConsoleColor arrowtC = ConsoleColor.Green;
+        static ConsoleColor colC = ConsoleColor.Black;
+        static ConsoleColor coltC = ConsoleColor.Green;
         static void Main(string[] args)
         {
             int temp;
@@ -29,8 +37,11 @@ namespace PragueParkingGeneral
             parkingLot.TryAddVehicle(new Bike("fkuman"),out temp);
             //parkingLot.TryRemoveVehicle("ABC123", out temp);
             Console.WindowWidth = 160;
+            Console.WindowHeight = 28;
 
             //Console.SetWindowSize(Console.LargestWindowWidth,Console.LargestWindowHeight);
+            // Color Setup
+
 
 
 
@@ -39,11 +50,16 @@ namespace PragueParkingGeneral
             {
                 // Format Setup
                 Console.Clear();
+                Console.BackgroundColor = trimC;
+                drawRec(0, 0, 160, 1, trimC);
                 Console.CursorVisible = false;
                 Console.WriteLine("Prauge Parking OOB 2.0");
+                Console.BackgroundColor = inputC;
                 drawParking(parkingLot, 1);
+                Console.ResetColor();
                 Console.CursorTop = 26;
                 Console.Write("1.Add Vehicle 2.Remove Vehicle 3.Search Vehicle 4.Move Vehicle 5.Show slots content");
+
                 menu = Console.ReadKey().KeyChar.ToString().ToUpper().First();
                 // Reading
 
@@ -138,8 +154,7 @@ namespace PragueParkingGeneral
                     Console.CursorVisible = true;
                     Console.Write("Input reg: ");
                     string reg = Console.ReadLine().Replace("\n", "");
-                    bool succ = false;
-                    int ind;
+
                     Console.CursorLeft = 0;
                     if (Regex.IsMatch(reg.ToUpper(), @"^[a-zA-Z0-9]+$") && reg.Length < 25)
                     {
@@ -174,7 +189,6 @@ namespace PragueParkingGeneral
                     Console.Write("Input reg: ");
                     string reg = Console.ReadLine().Replace("\n", "");
                     bool succ = false;
-                    int ind;
                     Console.CursorLeft = 0;
                     if (Regex.IsMatch(reg.ToUpper(), @"^[a-zA-Z0-9]+$") && reg.Length < 25)
                     {
@@ -249,9 +263,16 @@ namespace PragueParkingGeneral
                 if (i >= 25) Console.CursorLeft = 40;
                 if (i >= 50) Console.CursorLeft = 80;
                 if (i >= 75) Console.CursorLeft = 120;
+                // C
+                Console.BackgroundColor = indexC;
+                Console.ForegroundColor = indextC;
                 if (counter < 9) Console.Write(" ");
                 if (counter < 99) Console.Write(" ");
-                Console.Write(counter+1 + ">");
+                Console.Write(counter+1);
+                // C
+                Console.BackgroundColor = arrowC;
+                Console.ForegroundColor = arrowtC;
+                Console.Write(">");
                 counter++;
                 string str = "";
                 List<Vehicle> vehL = slots[i].Content();
@@ -268,8 +289,12 @@ namespace PragueParkingGeneral
                     str += s + ",";
                 }
                 if (str.EndsWith(",") == true) str = str.TrimEnd(',');
+                // C
+                Console.BackgroundColor = colC;
+                if (counter % 2 == 0) Console.BackgroundColor = ConsoleColor.DarkGray;
 
-                Console.WriteLine(str);
+                Console.ForegroundColor = coltC;
+                Console.WriteLine(str.PadRight(36));
             }
         }
 
@@ -299,5 +324,28 @@ namespace PragueParkingGeneral
             Console.CursorLeft = tempL;
             Console.CursorTop = tempT;
         }
+
+        static void drawRec(int x, int y, int width, int height, ConsoleColor c, ConsoleColor c2)
+        {
+            int tempL = Console.CursorLeft;
+            int tempT = Console.CursorTop;
+            ConsoleColor temp = Console.BackgroundColor;
+            ConsoleColor temp2 = Console.ForegroundColor;
+            Console.BackgroundColor = c;
+            for (int yi = y; yi < y + height; yi++)
+            {
+                for (int xi = x; xi < x + width; xi++)
+                {
+                    Console.CursorLeft = xi;
+                    Console.CursorTop = yi;
+                    Console.Write(" ");
+                }
+            }
+            Console.BackgroundColor = temp;
+            Console.ForegroundColor = temp2;
+            Console.CursorLeft = tempL;
+            Console.CursorTop = tempT;
+        }
+
     }
 }
