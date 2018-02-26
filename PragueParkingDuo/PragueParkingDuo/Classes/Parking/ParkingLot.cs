@@ -125,16 +125,13 @@ namespace PragueParkingDuo.Classes.Parking
             
             return false;
         }
-        
+
         public ParkingSlot[] Content()
         {
-            ParkingSlot[] returnValue = new ParkingSlot[100];
+            ParkingSlot[] cloneA = new ParkingSlot[100];
+            parkingslots.CopyTo(cloneA, 0);
 
-            for (int i = 0; i < parkingslots.Length; i++)
-            {
-                returnValue[i] = parkingslots[i];
-            }
-            return returnValue;
+            return cloneA;
         }
     }
 
