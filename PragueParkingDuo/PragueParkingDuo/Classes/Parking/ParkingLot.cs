@@ -128,7 +128,13 @@ namespace PragueParkingDuo.Classes.Parking
         
         public ParkingSlot[] Content()
         {
-            return parkingslots.Clone() as ParkingSlot[];
+            ParkingSlot[] returnValue = new ParkingSlot[100];
+
+            for (int i = 0; i < parkingslots.Length; i++)
+            {
+                returnValue[i] = parkingslots[i];
+            }
+            return returnValue;
         }
     }
 
