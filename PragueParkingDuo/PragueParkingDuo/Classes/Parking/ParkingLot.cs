@@ -8,7 +8,8 @@ namespace PragueParkingDuo.Classes.Parking
 {
     public class ParkingLot
     {
-        private ParkingSlot[] parkingslots = new ParkingSlot[100];
+        public static int amountOfParkingslots { get; } = 100;
+        private ParkingSlot[] parkingslots = new ParkingSlot[amountOfParkingslots];
         public int getNumFreeParkingSlots { get; private set; }
         public int getLargestFreeSpace { get; private set; }
 
@@ -126,12 +127,19 @@ namespace PragueParkingDuo.Classes.Parking
             return false;
         }
 
-        public ParkingSlot[] Content()
+        public List<Vehicle> GetVehiclesAt(int index)
         {
-            ParkingSlot[] cloneA = new ParkingSlot[100];
-            parkingslots.CopyTo(cloneA, 0);
+            return parkingslots[index].GetVehicles();
+        }
 
-            return cloneA;
+        public ParkingLot Clone()
+        {
+            ParkingLot temp = new ParkingLot();
+            for (int i = 0; i < parkingslots.Length; i++)
+            {
+                temp.parkingslots[i] = parkingslots[i].Clone();
+            }
+            return temp;
         }
     }
 

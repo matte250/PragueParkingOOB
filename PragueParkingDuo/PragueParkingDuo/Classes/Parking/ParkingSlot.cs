@@ -85,12 +85,22 @@ namespace PragueParkingDuo.Classes.Parking
             return null;
         }
 
-        public List<Vehicle> Content()
+        public ParkingSlot Clone()
+        {
+            ParkingSlot temp = new ParkingSlot();
+            foreach (Vehicle v in vehicles)
+            {
+                temp.AddVehicle(v.Clone());
+            }
+            return temp;
+        }
+
+        public List<Vehicle> GetVehicles()
         {
             List<Vehicle> vl = new List<Vehicle>();
-            foreach(Vehicle v in vehicles)
+            foreach (Vehicle v in vehicles)
             {
-                vl.Add(v.Clone());
+                vl.Add(v);
             }
             return vl;
         }

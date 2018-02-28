@@ -24,18 +24,12 @@ namespace PragueParkingGeneral
             int temp;
             ParkingLot parkingLot = new ParkingLot();
             parkingLot.TryAddVehicle(new Car("ABC123"), out temp);
-            //parkingLot.TryAddVehicle(new Mc ("ABC234"), out temp);
-            //parkingLot.TryAddVehicle(new Mc ("ABC345"), out temp);
-            //parkingLot.TryAddVehicle(new Car("ABC456"), out temp);
-            //parkingLot.TryAddVehicle(new Trike("TRIKEMF"), out temp);
-            //parkingLot.TryAddVehicle(new Bike("TRIKEBÅLLS"), out temp);
-            //parkingLot.TryAddVehicle(new Bike("TRIKEB2LLS"), out temp);
             parkingLot.TryAddVehicle(new Bike("TRIKEB3LLS"), out temp);
             parkingLot.TryAddVehicle(new Car("AB453426"), out temp);
-            parkingLot.TryAddVehicle(new Bike("TRIKE53235B3LLS"), out temp);
-            parkingLot.TryAddVehicle(new Trike("Mmer"), out temp);
-            parkingLot.TryAddVehicle(new Bike("fkuman"),out temp);
-            //parkingLot.TryRemoveVehicle("ABC123", out temp);
+            parkingLot.TryAddVehicle(new Bike("TRIKE53235B"), out temp);
+            parkingLot.TryAddVehicle(new Trike("BBB421"), out temp);
+            parkingLot.TryAddVehicle(new Bike("DDD123"),out temp);
+
             Console.WindowWidth = 160;
             Console.WindowHeight = 28;
 
@@ -243,7 +237,7 @@ namespace PragueParkingGeneral
                     if (int.TryParse(Console.ReadLine(), out tospot) && tospot >= 1 && tospot <= 100)
                     {
                         clearLine();
-                        List<Vehicle> templ = parkingLot.Content()[tospot-1].Content();
+                        List<Vehicle> templ = parkingLot.GetVehiclesAt(tospot - 1);
                         Console.Write("Vehicles in parkingslot {0}: ", tospot);
                         foreach (Vehicle v in templ)
                         {
@@ -266,10 +260,10 @@ namespace PragueParkingGeneral
 
         static void drawParking(ParkingLot lot, int y)
         {
-            ParkingSlot[] slots = lot.Content();
+            //ParkingSlot[] slots = lot.Content();
             int counter = 0;
             int cTop = 0;
-            for(int i = 0; i < slots.Length; i++)
+            for(int i = 0; i < ParkingLot.amountOfParkingslots; i++)
             {
                 Console.CursorTop = cTop + y;
                 cTop++;
@@ -289,9 +283,9 @@ namespace PragueParkingGeneral
                 Console.Write(">");
                 counter++;
                 string str = "";
-                List<Vehicle> vehL = slots[i].Content();
+                List<Vehicle> vehL = lot.GetVehiclesAt(i);
 
-                foreach(Vehicle veh in vehL)
+                foreach (Vehicle veh in vehL)
                 {
                     
                     string s = veh.ToString();
