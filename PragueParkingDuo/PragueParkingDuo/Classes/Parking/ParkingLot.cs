@@ -23,12 +23,17 @@ namespace PragueParkingDuo.Classes.Parking
 
         public bool TryAddVehicle(Vehicle veh, out int indexOut)
         {
-            int i = FindSpace(veh.Size);
-            if (i >= 0)
+            if (Search(veh.Reg)==-1)
             {
-                parkingslots[i].AddVehicle(veh);
-                indexOut = i;
-                return true;
+
+
+                int i = FindSpace(veh.Size);
+                if (i >= 0)
+                {
+                    parkingslots[i].AddVehicle(veh);
+                    indexOut = i;
+                    return true;
+                }
             }
             indexOut = -1;
             return false;
